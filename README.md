@@ -1,3 +1,2 @@
-# Pushup_Loggers
+# Todo list
 python base web application
-You can signin and logout 
