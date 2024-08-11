@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 app=Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///file.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todo.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
 
@@ -24,10 +24,18 @@ def __repr__(self)->str:
 
 @app.route('/')
 def hello_world():
-    file1 = Todo(title="TOday",desc="We are done almost")
-    db.session.add(file1)
+    todo = Todo(title="TOday",desc="We are done almost")
+    db.session.add(todo)
     db.session.commit()
-    return render_template('index.html')
+    alltodo = Todo.query.all()
+    #print(alltodo)
+    return render_template('index.html',alltodo=alltodo)
+
+@app.route('/show')
+def product_list():
+  alltodo = Todo.query.all()
+  print(alltodo)
+  return 'this is page'
 
 if __name__ == "__main__":
 
