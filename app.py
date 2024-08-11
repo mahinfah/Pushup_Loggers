@@ -24,7 +24,7 @@ def __repr__(self)->str:
 
 @app.route('/')
 def hello_world():
-    file1 = Todo(title="dsdsd",dec="asdas")
+    file1 = Todo(title="dsdsd",desc="asdas")
     db.session.add(file1)
     db.session.commit()
     return render_template('index.html')
