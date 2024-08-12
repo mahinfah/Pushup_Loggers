@@ -1,4 +1,4 @@
-from flask import Flask ,render_template
+from flask import Flask ,render_template,request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -22,9 +22,13 @@ def __repr__(self)->str:
     return f"{self.sno}- {self.title}"
 
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def hello_world():
-    todo = Todo(title="TOday",desc="We are done almost")
+    if request.method == 'POST':
+       title=(request.form['title'])
+       desc=(request.form['desc'])
+    
+    todo = Todo(title=title,desc=desc)
     db.session.add(todo)
     db.session.commit()
     alltodo = Todo.query.all()
