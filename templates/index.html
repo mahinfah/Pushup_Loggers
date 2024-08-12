@@ -78,15 +78,20 @@
 
          <div class="container my-3">
             <h1>Your Todos </h1>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">S.no</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Date</th>
-                  </tr>
-                </thead>
+           
+                {% if alltodo|length==0 %}
+                No Record Found
+                {% else %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">S.no</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Date</th>
+                    </tr>
+                  </thead>
+                {% endif %}
                 <tbody>
                   {% for todo in alltodo %}
                     
@@ -101,11 +106,11 @@
                     </td>
                   </tr>
                 
+                  
                   {% endfor %}
                   
                 
-                </tbody>
-              </table>
+              
          </div>
 
       </body>
