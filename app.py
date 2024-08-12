@@ -25,14 +25,14 @@ def __repr__(self)->str:
 @app.route('/',methods=['GET','POST'])
 def hello_world():
     if request.method == 'POST':
-       title=(request.form['title'])
-       desc=(request.form['desc'])
-    
-    todo = Todo(title=title,desc=desc)
-    db.session.add(todo)
-    db.session.commit()
+        title = request.form.get('title')
+        desc = request.form.get('desc')
+        todo = Todo(title=title,desc=desc)
+        db.session.add(todo)
+        db.session.commit()
+
     alltodo = Todo.query.all()
-    #print(alltodo)
+        #print(alltodo)
     return render_template('index.html',alltodo=alltodo)
 
 @app.route('/show')
