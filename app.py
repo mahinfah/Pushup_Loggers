@@ -1,4 +1,4 @@
-from flask import Flask ,render_template,request
+from flask import Flask ,render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -40,6 +40,21 @@ def product_list():
   alltodo = Todo.query.all()
   print(alltodo)
   return 'this is page'
+
+@app.route('/delete/<int:sno>')
+def delete(sno):
+  todo = Todo.query.filter_by(sno=sno).first()
+  db.session.delete(todo)
+  db.session.commit()
+  return redirect('/')
+
+
+#@app.route('/update')
+#def update():
+  #alltodo = Todo.query.all()
+ # print(alltodo)
+ # return 'this is page'
+
 
 if __name__ == "__main__":
 
