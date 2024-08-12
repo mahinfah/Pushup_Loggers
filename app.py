@@ -49,11 +49,12 @@ def delete(sno):
   return redirect('/')
 
 
-#@app.route('/update')
-#def update():
-  #alltodo = Todo.query.all()
- # print(alltodo)
- # return 'this is page'
+@app.route('/update/<int:sno>')
+def update(sno): 
+   todo = Todo.query.filter_by(sno=sno).first()
+   return render_template('update.html',todo=todo)
+ 
+   return 'this is page'
 
 
 if __name__ == "__main__":
