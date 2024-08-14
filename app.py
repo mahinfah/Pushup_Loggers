@@ -40,7 +40,7 @@ def product_list():
   print(alltodo)
   return 'this is page'
 
-@app.route('/about')
+@app.route('/about', methods=['GET', 'POST'])
 def about():
   return render_template('about.html')
 
