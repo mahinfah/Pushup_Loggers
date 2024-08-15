@@ -39,10 +39,9 @@ def product_list():
   alltodo = Todo.query.all()
   print(alltodo)
   return 'this is page'
-
-@app.route('/ab')
-def about():
-  return render_template('about.html')
+  @app.route('/about')
+  def about():
+    return render_template('ab.html')
 
 
 
